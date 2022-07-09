@@ -27,12 +27,22 @@ app.get("/api/hello", function (req, res) {
 
 //Timestamp Microservice
 
+//An empty date parameter should return the current time in a JSON object
+
+// app.get("/api/", (req, res) => {
+//   res.json({ unix: Date.now(), utc: Date() });
+// });
+  
+//OR
+
 app.get("/api/", (req, res) => {
   let resObject = {}
   resObject.unix = Date.now()
   resObject.utc = Date()
   res.json(resObject)
 })
+
+//With parameter date_string
 app.get("/api/:date_string?", (req, res) => {
 
   let dateString = req.params.date_string;
@@ -70,14 +80,7 @@ app.get("/api/:date_string?", (req, res) => {
 
 
 
-// app.get("/api/", (req, res) => {
 
-//   res.json({ unix: Date.now(), utc: Date() });
-
-// });
-  
-// 
-//An empty date parameter should return the current time in a JSON object
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
